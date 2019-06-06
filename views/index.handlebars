@@ -1,0 +1,51 @@
+<h1 class="display-4 text-center">Eat-Da-Burger!</h1>
+<img class="img img-responsive img-thumbnail mx-auto d-block" src="assets/img/burger.png" style="height:240px" alt="burger_pic">
+<hr class="my-4">
+
+<div class="row">
+  <div class="col-6">
+    <h2 class="display-6">Waiting to be devoured</h2>
+    <ul class="list-group">
+      {{#each burgers}}
+        {{#unless devoured}}
+          <li class="list-group-item">
+            {{burger_name}}
+            <button class="btn btn-danger btn-sm change-devour" data-id="{{id}}" data-newdevour="true">
+              {{#unless devour}}Devour it!{{/unless}}
+            </button>
+          </li>
+        {{/unless}}
+      {{/each}}
+    </ul>
+  </div>
+  <div class="col-6">
+    <h2 class="display-6">Burgers that are devoured!</h2>
+    <ul class="list-group">
+      {{#each burgers}}
+        {{#if devoured}}
+          <li class="list-group-item">
+            {{burger_name}}
+          </li>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+</div>
+<hr class="my-4">
+
+<h2 class="display-6">Add a Burger</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="bu">Burger Name:</label>
+    <input type="text" id="bu" name="name" required="required">
+  </div>
+
+  <div class="form-group">
+    <label for="devoured">Devoured?</label><br>
+    <input type="radio" name="devoured" value="0" checked> Not Devoured!<br>
+    <input type="radio" name="devoured" value="1"> Devoured!
+  </div>
+
+  <button class="btn btn-success" type="submit">Add Burger</button>
+</form>
